@@ -1,0 +1,46 @@
+{
+    "lastModified": 1335514842000,
+    "name": "Alkaline",
+    "realm": "Hellscream",
+    "battlegroup": "Rampage",
+    "level": 15,
+    "side": 1,
+    "achievementPoints": 1150,
+    "members": [
+    {
+        "character":
+        {
+            "name": "Lorn",
+            "realm": "Hellscream",
+            "class": 7,
+            "race": 6,
+            "gender": 0,
+            "level": 73,
+            "achievementPoints": 910,
+            "thumbnail": "hellscream/8/5008136-avatar.jpg"
+        },
+        "rank": 8
+    },
+    {
+        "character":
+        {
+            "name": "Lerry",
+            "realm": "Hellscream",
+            "class": 1,
+            "race": 8,
+            "gender": 0,        
+            "level": 85,
+            "achievementPoints":1 420,
+            "thumbnail": "hellscream/180/5088180-avatar.jpg"
+        },
+        "rank": 8
+    }],
+    "emblem":
+    {
+        "icon": 152,
+        "iconColor": "ff5d094f",
+        "border": 2,
+        "borderColor": "ffffffff",
+        "backgroundColor": "ff646464"
+    }
+}

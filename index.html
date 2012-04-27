@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="WowArmory">
+<head>
+    <script type="text/javascript" src="http://code.angularjs.org/1.0.0rc6/angular-1.0.0rc6.min.js"></script>
+    <script type="text/javascript" src="http://code.angularjs.org/1.0.0rc6/angular-resource-1.0.0rc6.min.js"></script>
+    <script type="text/javascript" src="armory.js"></script>
+</head>
+<body>
+    <div ng-controller="ArmoryController">
+        <h2>Members</h2>
+
+        <div ng-repeat="member in Guild.members" style="clear: both;">
+            <!--<img src="{{member.character.thumbnail}}" style="float: left;" />-->
+
+            <h3>Character: {{member.character.name}}</h3>
+
+            <div>Realm: {{member.character.realm}}</div>
+            <div>Class: {{member.character.class}}</div>
+            <div>Race: {{member.character.race}}</div>
+            <div>Gender: {{member.character.gender}}</div>
+            <div>Achievement Points: {{member.character.achievementPoints}}</div>
+            <div>Rank: {{member.rank}}</div>
+        </div>
+    </div>
+</body>
+</html>

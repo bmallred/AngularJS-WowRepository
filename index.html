@@ -4,23 +4,63 @@
     <script type="text/javascript" src="//code.angularjs.org/1.0.0rc6/angular-1.0.0rc6.min.js"></script>
     <script type="text/javascript" src="//code.angularjs.org/1.0.0rc6/angular-resource-1.0.0rc6.min.js"></script>
     <script type="text/javascript" src="armory.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="site.css" />
 </head>
 <body>
-    <div ng-controller="ArmoryController">
-        <h2>Members</h2>
+    <div role="main" ng-controller="WowArmory.ArmoryController">
+        <form>
+        <label for="myRealm">Realm</label>
+        <select id="myRealm" ng-model="realm" ng-options="r.name for r in realms.realms">
+            <option value="">-- Select a realm --</option>
+        </select>
 
-        <div ng-repeat="member in Guild.members" style="clear: both;">
-            <img src="//us.battle.net/static-render/us/{{member.character.thumbnail}}" style="float: left; padding: 1em;" />
+        <label for="myGuild">Guild</label>
+        <input id="myGuild" type="text" ng-model="guild" placeholder="Guild name" />
 
-            <div style="float: left;">
-                <h3>Character: {{member.character.name}}</h3>
+        <button type="submit" ng-click="fetchMembers()">Get Members</button>
+        </form>
 
-                <div>Realm: {{member.character.realm}}</div>
-                <div>Class: {{member.character.class}}</div>
-                <div>Race: {{member.character.race}}</div>
-                <div>Gender: {{member.character.gender}}</div>
-                <div>Achievement Points: {{member.character.achievementPoints}}</div>
-                <div>Rank: {{member.rank}}</div>
+        <hr />
+
+        <h2>Notice</h2>
+        <p class="notice">
+            This was purely created for experimentating with AngularJS. Sometimes the callbacks receive an HTTP error code of 500 from the servers. Just wait a second if this is the case and try again.
+        </p>
+
+        <hr />
+
+        <h2>{{guild}}</h2>
+        <div class="character" ng-repeat="member in members.members">
+            <img class="thumbnail" ng:src="//us.battle.net/static-render/us/{{member.character.thumbnail}}" />
+
+            <div class="stats">
+                <table>
+                    <tr>
+                        <td>Character</td>
+                        <td class="italic">{{member.character.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Class</td>
+                        <td class="italic">{{member.character.class}}</td>
+                    </tr>
+                    <tr>
+                        <td>Race</td>
+                        <td class="italic">{{member.character.race}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td class="italic">{{member.character.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td>Achievement Points</td>
+                        <td class="italic">{{member.character.achievementPoints}}</td>
+                    </tr>
+                    <tr>
+                        <td>Rank</td>
+                        <td class="italic">{{member.rank}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

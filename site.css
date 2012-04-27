@@ -1,0 +1,55 @@
+body {
+    background-color: #666;
+    margin: 0;
+    padding: 0;
+}
+
+div[role="main"] {
+    background-color: #eee;
+    margin: 0 20% 0 20%;
+    padding: 1em;
+    text-align: center;
+    min-height: 600px;
+}
+
+h2 {
+    clear: both;
+    text-transform: capitalize;
+}
+
+label {
+    font-weight: bold;
+}
+
+button, input, select {
+    padding: 0.55em 0.45em;
+}
+
+.italic {
+    font-style: italic;
+    padding-left: 2em;
+}
+
+.character {
+    clear: both;
+    padding-top: 1em;
+}
+
+.character .thumbnail {
+    float: left;
+    padding-right: 1em;
+    width: 100px;
+}
+
+.character .stats {
+    float: left;
+    text-align: left;
+    vertical-align: text-top;
+}
+
+.notice {
+    border: 1px #000 dashed;
+    padding: 1em;
+    background-color: #fee;
+    text-align: left;
+}

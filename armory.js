@@ -1,9 +1,40 @@
 angular.module('WowArmory', ['ngResource']);
 
-function ArmoryController($scope, $resource) {
-    $scope.armory = $resource('//:server/api/wow/guild/:realm/:guild', 
-        { server: 'us.battle.net', realm: 'hellscream', guild: 'alkaline', fields: 'members', jsonp: 'angular.callbacks._0' }, 
-        { query: { method: 'JSONP' }});
+window.WowArmory = {};
+window.WowArmory.counter = 0;
 
-    $scope.Guild = $scope.armory.get();
+// This was done because I don't think I can use "callback: 'JSON_CALLBACK'" and
+// I didn't want to hand-jam it everytime.
+window.WowArmory.NewCallback = function(id) {
+    if (id == undefined) {
+        id = window.WowArmory.counter++;
+    }
+
+    return 'angular.callbacks._' + id;
+};
+
+window.WowArmory.ArmoryController = function($scope, $resource) {
+    // Some bindable values.
+    $scope.realm = { name: '', slug: '' };
+    $scope.guild = '';
+
+    // Resource for the realms.
+    $scope.apiRealms = $resource('//:server/api/wow/realm/status',
+        { server: 'us.battle.net', jsonp: window.WowArmory.NewCallback() },
+        { get: { method: 'JSONP' }});
+    $scope.realms = $scope.apiRealms.get();
+
+    // Handle the members and its resource(s).
+    $scope.members = [];
+    $scope.fetchMembers = function() {
+        if ($scope.realm.slug.length > 0 && $scope.guild.length > 0) {
+
+            // Resource for the guild members.
+            $scope.apiMembers = $resource('//:server/api/wow/guild/:realm/:guild', 
+                { server: 'us.battle.net', realm: $scope.realm.slug, guild: $scope.guild, fields: 'members', jsonp: window.WowArmory.NewCallback() }, 
+                { get: { method: 'JSONP' }});
+
+            $scope.members = $scope.apiMembers.get();
+        }
+    };
 };

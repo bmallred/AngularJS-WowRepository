@@ -10,16 +10,17 @@
 <body>
     <div role="main" ng-controller="WowArmory.ArmoryController">
         <form>
-        <label for="myRealm">Realm</label>
-        <select id="myRealm" ng-model="realm" ng-options="r.name for r in realms.realms">
-            <option value="">-- Select a realm --</option>
-        </select>
+            <label for="myRealm">Realm</label>
+            <select id="myRealm" ng-model="realm" ng-options="r.name for r in realms.realms">
+                <option value="">-- Select a realm --</option>
+            </select>
 
-        <label for="myGuild">Guild</label>
-        <input id="myGuild" type="text" ng-model="guild" placeholder="Guild name" />
+            <label for="myGuild">Guild</label>
+            <input id="myGuild" type="text" ng-model="guild" placeholder="Guild name" />
 
-        <p style="font-style: italic;">example: "Hellscream" : "Rejected"</p>
-        <button type="submit" ng-click="fetchMembers()" ng-disabled="realmError.length > 0">Get Members</button>
+            <button type="submit" ng-click="fetchMembers()" ng-disabled="realmError.length > 0">Get Members</button>
+
+            <p style="font-style: italic;">example: "Hellscream" : "Rejected"</p>
         </form>
 
         <hr />

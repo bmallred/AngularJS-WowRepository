@@ -42,7 +42,6 @@ button, input, select {
 }
 
 .character .stats {
-    float: left;
     text-align: left;
     vertical-align: text-top;
 }
